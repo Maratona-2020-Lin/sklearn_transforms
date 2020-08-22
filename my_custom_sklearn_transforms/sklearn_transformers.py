@@ -1,4 +1,5 @@
 from sklearn.base import BaseEstimator, TransformerMixin
+from sklearn.preprocessing import MinMaxScaler
 
 
 # All sklearn Transforms must have the `transform` and `fit` methods
@@ -13,4 +14,4 @@ class DropColumns(BaseEstimator, TransformerMixin):
         # Primeiro realizamos a cópia do dataframe 'X' de entrada
         data = X.copy()
         # Retornamos um novo dataframe sem as colunas indesejadas
-        return data.drop(labels=self.columns, axis='columns')
+        return MinMaxScaler().fit_transform(data.drop(labels=self.columns, axis='columns'))
